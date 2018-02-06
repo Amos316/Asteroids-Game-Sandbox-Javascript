@@ -26,12 +26,12 @@ var InputHandler = Class.extend({
       }
     });
   },
-  isDown: function(key) {
+  isDown: function (key) {
     return this.down[key];
   },
-  isPressed: function(key) {
+  isPressed: function (key) {
     if (this.pressed[key]) {
-     return false;
+      return false;
     } else if (this.down[key]) {
       return this.pressed[key] = true;
     }

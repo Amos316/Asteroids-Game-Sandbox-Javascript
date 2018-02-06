@@ -23,44 +23,44 @@ var Canvas = Class.extend({
         }
         this.stroke();
       };
-      ctx.vectorText = function(text, s, x, y, offset){
+      ctx.vectorText = function (text, s, x, y, offset) {
         text = text.toString().toUpperCase();
-        var step = s*6;
+        var step = s * 6;
 
-        if(typeof offset === "number"){
-          x += step*(offset - text.length);
+        if (typeof offset === "number") {
+          x += step * (offset - text.length);
         }
 
-        if(typeof x !== "number"){
-          x = Math.round((this.width - text.length*step)/2)
+        if (typeof x !== "number") {
+          x = Math.round((this.width - text.length * step) / 2)
         }
-        if(typeof y !== "number"){
-          y = Math.round((this.height - step)/2)
+        if (typeof y !== "number") {
+          y = Math.round((this.height - step) / 2)
         }
 
         x += 0.5;
-        y =+ 0.5;
+        y = + 0.5;
 
-        for (var i = 0, len = text.length; i<len; i++){
+        for (var i = 0, len = text.length; i < len; i++) {
           var ch = text.charCodeAt(i);
-          if(ch === this.SCODE) {
-              x += step;
-              continue;
+          if (ch === this.SCODE) {
+            x += step;
+            continue;
           }
 
           var p;
-          if(ch - this.ACODE >= 0){
-            p = Points.LETTERS[ch- this.ACODE];
-          }else {
-            p= Points.NUMBERS[ch - this.ZCODE];
+          if (ch - this.ACODE >= 0) {
+            p = Points.LETTERS[ch - this.ACODE];
+          } else {
+            p = Points.NUMBERS[ch - this.ZCODE];
           }
-        this.beginPath();
-        this.moveTo(p[0]*s + x, p[1]*s + y);
-        for (var j = 2, len2 = p.length; j < len2; j += 2) {
-          this.lineTo(p[j]*s + x, p[j + 1]*s + y);
-        }
-        this.stroke();
-        x += step;
+          this.beginPath();
+          this.moveTo(p[0] * s + x, p[1] * s + y);
+          for (var j = 2, len2 = p.length; j < len2; j += 2) {
+            this.lineTo(p[j] * s + x, p[j + 1] * s + y);
+          }
+          this.stroke();
+          x += step;
         }
       };
       ctx.clearAll = function () {
